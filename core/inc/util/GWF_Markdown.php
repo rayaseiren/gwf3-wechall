@@ -3,8 +3,13 @@
 require_once __DIR__ . '/../3p/ParsedownCheckbox.php';
 
 
-final class GWF_Parsedown extends ParsedownCheckbox
+final class GWF_Markdown extends ParsedownCheckbox
 {
+    public function transform($text)
+    {
+        return '<div class="markdown">' . $this->text($text) . '</div>';
+    }
+
     protected function blockFencedCodeComplete($Block)
     {
         if (!GWF_GESHI_PATH) {

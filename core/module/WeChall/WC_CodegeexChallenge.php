@@ -1,6 +1,6 @@
 <?php
 require_once 'WC_Challenge.php';
-require_once GWF_CORE_PATH . 'inc/util/GWF_Parsedown.php';
+require_once GWF_CORE_PATH . 'inc/util/GWF_Markdown.php';
 
 /**
  * Helper stuff for a codinggeex challenge.
@@ -292,9 +292,9 @@ final class WC_CodegeexChallenge
 	{
 		$path = $this->directory . 'README.md';
 		$markdown = file_get_contents($path);
-		$pd = new GWF_Parsedown();
-		$pd->setSafeMode(true);
-		return '<div class="markdown">' . $pd->text($markdown) . '</div>';
+		$md = new GWF_Markdown();
+		$md->setSafeMode(true);
+		return $md->transform($markdown);
 	}
 
 
