@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/GWF_Parsedown.php';
+require_once __DIR__ . '/GWF_Markdown.php';
 
 /** 
  * Render the snippets.
@@ -412,9 +412,9 @@ final class GWF_BBCodeItem
 
 	public function render_markdown($htmlspecial, $nl2br, $raw)
 	{
-		$pd = new GWF_Parsedown();
-		$pd->setSafeMode(true);
-		return '<div class="markdown">' . $pd->text($this->renderChilds(false, false, true)) . '</div>';
+		$md = new GWF_Markdown();
+		$md->setSafeMode(true);
+		return $md->transform($this->renderChilds(false, false, true));
 	}
 
 	public function render_quote($htmlspecial, $nl2br, $raw)
